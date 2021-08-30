@@ -115,7 +115,7 @@ class Contact {
 let contact = new Contact("Abc", "Xyz", "1/2 abc Colony", "Mumbai", "Maharashtra", "123456", "91 9876543211", "abc@gmail.com");
 console.log("Creating new contact :- ")
 console.log(contact.toString());
-console.log("***************************************************************************\n\n")
+console.log("**********************************************************************************\n\n")
 
 //UC2 : Checking For Invalid Fields
 {
@@ -162,7 +162,7 @@ console.log("*******************************************************************
     }
     console.log("\nContact After Setting Invalid Fields : \n" + contact.toString());
 }
-console.log("*******************************************************************************\n\n")
+console.log("***********************************************************************************\n\n")
 
 //UC3 : Create an Address Book Array and Add New Contacts to it.
 console.log("Creating address book array and adding new contacts :-")
@@ -173,7 +173,7 @@ let contact2=new Contact("Gary","Lus","Sitaburdi",'Nagpur','Maha','441904',"91 7
 addressBookArray.push(contact2)
 console.log("ADDRESS BOOK ARRAY :");
 addressBookArray.forEach(contact => console.log(contact.toString()));
-console.log("*******************************************************************************\n\n")
+console.log("***********************************************************************************\n\n")
 
 //UC4 : Find and Edit Existing Contact using their Name
 {
@@ -188,7 +188,7 @@ console.log("*******************************************************************
     }
     console.log("After editing existing contact : ")
     console.log(addressBookArray)
-    console.log("******************************************************************\n\n")
+    console.log("***********************************************************************************\n\n")
 }
 
 //UC5: Find and Delete contact from address book
@@ -202,5 +202,13 @@ console.log("*******************************************************************
     }
     console.log("After deleting contact from address book : ")
     console.log(addressBookArray)
-    console.log("****************************************************************\n\n")
+    console.log("***********************************************************************************\n\n")
 }
+
+//UC6: Find number of contacts in the address book
+function numberOfContacts(totalCount) {
+    return totalCount + 1
+}
+let totalNumberOfContacts = addressBookArray.reduce(numberOfContacts, 0)
+console.log("Total Number of Contacts in the Address Book Array : " + totalNumberOfContacts);
+console.log("***********************************************************************************\n\n")
