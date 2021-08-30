@@ -115,7 +115,8 @@ class Contact {
 let contact = new Contact("Abc", "Xyz", "1/2 abc Colony", "Mumbai", "Maharashtra", "123456", "91 9876543211", "abc@gmail.com");
 console.log("Creating new contact :- ")
 console.log(contact.toString());
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC2 : Checking For Invalid Fields
 {
     console.log("Checking invalid Fields :-")
@@ -161,7 +162,8 @@ console.log("*******************************************************************
     }
     console.log("\nContact After Setting Invalid Fields : \n" + contact.toString());
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC3 : Create an Address Book Array and Add New Contacts to it.
 console.log("Creating address book array and adding new contacts :-")
 let addressBookArray = new Array();
@@ -171,7 +173,8 @@ let contact2=new Contact("Gary","Lus","Sitaburdi",'Nagpur','Maharashtra','441904
 addressBookArray.push(contact2)
 console.log("ADDRESS BOOK ARRAY :");
 addressBookArray.forEach(contact => console.log(contact.toString()));
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC4 : Find and Edit Existing Contact using their Name
 {
     let findName = "Gary"
@@ -185,7 +188,8 @@ console.log("*******************************************************************
     }
     console.log("After editing existing contact : ")
     console.log(addressBookArray)
-    console.log("*****************************************************************************\n\n")}
+    console.log("*******************************************************************************\n\n")
+}
 
 //UC5: Find and Delete contact from address book
 {
@@ -198,7 +202,8 @@ console.log("*******************************************************************
     }
     console.log("After deleting contact from address book : ")
     console.log(addressBookArray)
-    console.log("*****************************************************************************\n\n")}
+    console.log("*******************************************************************************\n\n")
+}
 
 //UC6: Find number of contacts in the address book
 function numberOfContacts(totalCount) {
@@ -206,7 +211,8 @@ function numberOfContacts(totalCount) {
 }
 let totalNumberOfContacts = addressBookArray.reduce(numberOfContacts, 0)
 console.log("Total Number of Contacts in the Address Book Array : " + totalNumberOfContacts);
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC7 : Ensure No Duplicate entries of same Contact present in address book
 console.log("Ensures no duplicate entry present in address book :- ")
 let newContact=new Contact("Mark","Smith","Borivali",'Mumbai','Maharashtra','125412',"99 7854123233",'mark@gmail.com');
@@ -226,7 +232,8 @@ function addContact(contactToAdd) {
         addressBookArray.push(contactToAdd);        
     } else throw "Contact : " + contactToAdd.firstName + " " + contactToAdd.lastName + " is already present in the Address Book Array";   
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 
 //UC8: Search the person/contact by state or by city
 {
@@ -237,7 +244,8 @@ console.log("*******************************************************************
     let stateName = "Maharashtra"
     addressBookArray.filter(contact => contact.state == stateName).forEach(contact => console.log(contact.toString()))    
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC9: View persons by city or state name
 {
     console.log("View contacts by city name :-")
@@ -247,7 +255,8 @@ console.log("*******************************************************************
     let stateName = "Maharashtra"
     console.log(addressBookArray.filter(contact => contact.state == stateName).map(contact => contact.firstName))
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC10: Get contacts count by city or state name
 {
     console.log("Contacts count by city name :-")
@@ -257,10 +266,21 @@ console.log("*******************************************************************
     let stateName = "Maharashtra"
     console.log(addressBookArray.filter(contact => contact.state == stateName).reduce((count, contact) => contact != undefined ? ++count : count, 0))
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
 //UC11 : Sort contacts by their name
 {
     console.log("Sorted Addressbook")
     console.log(addressBookArray.sort((a,b) => a.firstName.localeCompare(b.firstName)))
 }
-console.log("*****************************************************************************\n\n")
+console.log("*******************************************************************************\n\n")
+
+//UC12 : Sort contacts by their city, state, zip
+{
+    console.log("Sort Addressbook by their city name :")
+    console.log(addressBookArray.sort((a,b) => a.city.localeCompare(b.city)))
+    console.log("\nSort Addressbook by their state name :")
+    console.log(addressBookArray.sort((a,b) => a.state.localeCompare(b.state)))
+    console.log("\nSort Addressbook by their zip code :")
+    console.log(addressBookArray.sort((a,b) => a.zip.localeCompare(b.zip)))
+}
