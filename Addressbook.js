@@ -115,7 +115,7 @@ class Contact {
 let contact = new Contact("Abc", "Xyz", "1/2 abc Colony", "Mumbai", "Maharashtra", "123456", "91 9876543211", "abc@gmail.com");
 console.log("Creating new contact :- ")
 console.log(contact.toString());
-console.log("**********************************************************************************\n\n")
+console.log("**************************************************************************************\n\n")
 
 //UC2 : Checking For Invalid Fields
 {
@@ -162,18 +162,18 @@ console.log("*******************************************************************
     }
     console.log("\nContact After Setting Invalid Fields : \n" + contact.toString());
 }
-console.log("***********************************************************************************\n\n")
+console.log("**************************************************************************************\n\n")
 
 //UC3 : Create an Address Book Array and Add New Contacts to it.
 console.log("Creating address book array and adding new contacts :-")
 let addressBookArray = new Array();
-let contact1=new Contact("Mark","Smith","Borivali",'Mumbai','Maha','125412',"99 7854123233",'mark@gmail.com');
+let contact1=new Contact("Mark","Smith","Borivali",'Mumbai','Maharashtra','125412',"99 7854123233",'mark@gmail.com');
 addressBookArray.push(contact1)
-let contact2=new Contact("Gary","Lus","Sitaburdi",'Nagpur','Maha','441904',"91 7857723233",'gary@gmail.com');
+let contact2=new Contact("Gary","Lus","Sitaburdi",'Nagpur','Maharashtra','441904',"91 7857723233",'gary@gmail.com');
 addressBookArray.push(contact2)
 console.log("ADDRESS BOOK ARRAY :");
 addressBookArray.forEach(contact => console.log(contact.toString()));
-console.log("***********************************************************************************\n\n")
+console.log("**************************************************************************************\n\n")
 
 //UC4 : Find and Edit Existing Contact using their Name
 {
@@ -188,7 +188,7 @@ console.log("*******************************************************************
     }
     console.log("After editing existing contact : ")
     console.log(addressBookArray)
-    console.log("***********************************************************************************\n\n")
+    console.log("**************************************************************************************\n\n")
 }
 
 //UC5: Find and Delete contact from address book
@@ -202,7 +202,7 @@ console.log("*******************************************************************
     }
     console.log("After deleting contact from address book : ")
     console.log(addressBookArray)
-    console.log("***********************************************************************************\n\n")
+    console.log("**************************************************************************************\n\n")
 }
 
 //UC6: Find number of contacts in the address book
@@ -211,4 +211,37 @@ function numberOfContacts(totalCount) {
 }
 let totalNumberOfContacts = addressBookArray.reduce(numberOfContacts, 0)
 console.log("Total Number of Contacts in the Address Book Array : " + totalNumberOfContacts);
-console.log("***********************************************************************************\n\n")
+console.log("**************************************************************************************\n\n")
+
+//UC7 : Ensure No Duplicate entries of same Contact present in address book
+console.log("Ensures no duplicate entry present in address book :- ")
+let newContact=new Contact("Mark","Smith","Borivali",'Mumbai','Maharashtra','125412',"99 7854123233",'mark@gmail.com');
+try {
+    addContact(newContact);
+} catch (error) {
+    console.error(error);
+}
+function isExists(newContact) {
+    let foundContact = addressBookArray.find(contact => contact.firstName == newContact.firstName && contact.lastName == newContact.lastName);
+    if (foundContact != undefined) return true;
+    else return false;
+}
+function addContact(contactToAdd) {
+    let alreadyExists = isExists(contactToAdd);
+    if (!alreadyExists) {
+        addressBookArray.push(contactToAdd);        
+    } else throw "Contact : " + contactToAdd.firstName + " " + contactToAdd.lastName + " is already present in the Address Book Array";   
+}
+console.log("**************************************************************************************\n\n")
+
+
+//UC8: Search the person/contact by state or by city
+{
+    console.log("Search contact by city name :-")
+    let cityName = "Mumbai"
+    addressBookArray.filter(contact => contact.city == cityName).forEach(contact => console.log(contact.toString()))
+    console.log("Search contact by state name :-")
+    let stateName = "Maharashtra"
+    addressBookArray.filter(contact => contact.state == stateName).forEach(contact => console.log(contact.toString()))    
+}
+console.log("**************************************************************************************\n\n")
